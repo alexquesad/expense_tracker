@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 class ExpenseItem extends StatelessWidget {
   const ExpenseItem(this.expense, {super.key});
-
   final Expense expense;
 
   @override
   Widget build(BuildContext context) {
+    // Get text theme directly to ensure it's applied
+    final textTheme = Theme.of(context).textTheme;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -15,8 +17,13 @@ class ExpenseItem extends StatelessWidget {
           vertical: 16,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.title),
+            Text(
+              expense.title,
+              style: textTheme
+                  .titleLarge, // Make sure this style exists in your theme
+            ),
             const SizedBox(height: 4),
             Row(
               children: [
@@ -25,7 +32,7 @@ class ExpenseItem extends StatelessWidget {
                 Row(
                   children: [
                     Icon(categoryIcons[expense.category]),
-                    const SizedBox(),
+                    const SizedBox(width: 8), // Add proper spacing
                     Text(expense.formattedDate),
                   ],
                 ),

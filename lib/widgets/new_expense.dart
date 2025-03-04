@@ -71,7 +71,7 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.fromLTRB(16, 48, 16, 16),
       child: Column(
         children: [
           TextField(
@@ -134,12 +134,14 @@ class _NewExpenseState extends State<NewExpense> {
                       _selectedCategory = value;
                     });
                   }),
+              Spacer(),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: const Text('Cancel'),
               ),
+              const SizedBox(width: 8),
               ElevatedButton(
                 onPressed: _submitExpenseData,
                 child: const Text('Save Expense'),
